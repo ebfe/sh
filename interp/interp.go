@@ -1010,7 +1010,9 @@ func (r *Runner) call(ctx context.Context, pos syntax.Pos, args []string) {
 }
 
 func (r *Runner) exec(ctx context.Context, args []string) {
+	log.Printf("LOOKPATH: %s\n", args[0])
 	path := r.lookPath(args[0])
+	log.Printf("====>: %s\n", path)
 	err := r.Exec(r.modCtx(ctx), path, args)
 	switch x := err.(type) {
 	case nil:
